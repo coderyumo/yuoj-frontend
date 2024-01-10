@@ -34,7 +34,9 @@
       <template #acceptedRate="{ record }">
         {{
           `${
-            record.submitNum ? record.acceptedNum / record.submitNum : "0"
+            record.submitNum
+              ? ((record.acceptedNum / record.submitNum) * 100).toFixed(0)
+              : "0"
           }% (${record.acceptedNum}/${record.submitNum})`
         }}
       </template>
@@ -52,16 +54,14 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import { onMounted, ref, watchEffect } from "vue";
 import {
-  Page_Question_,
   Question,
   QuestionControllerService,
   QuestionQueryRequest,
 } from "../../../generated";
 import message from "@arco-design/web-vue/es/message";
-import * as querystring from "querystring";
 import { useRouter } from "vue-router";
 import moment from "moment";
 
@@ -118,7 +118,7 @@ const columns = [
     slotName: "tags",
   },
   {
-    title: "通过率",
+    title: "通过率(AC/提交)",
     slotName: "acceptedRate",
   },
   {

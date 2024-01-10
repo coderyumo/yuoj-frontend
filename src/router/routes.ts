@@ -5,6 +5,7 @@ import UserLoginView from "@/views/user/UserLoginView.vue";
 import UserRegisterView from "@/views/user/UserRegisterView.vue";
 import AdminView from "@/views/AdminView.vue";
 import NoAuthView from "@/views/NoAuthView.vue";
+import ExampleCodeView from "@/views/ExampleCodeView.vue";
 import ACCESS_ENUM from "@/access/accessEnum";
 import AddQuestionView from "@/views/question/AddQuestionView.vue";
 import ManageQuestionView from "@/views/question/ManageQuestionView.vue";
@@ -32,6 +33,11 @@ export const routes: Array<RouteRecordRaw> = [
     meta: {
       hideInMenu: true,
     },
+  },
+  {
+    path: "/",
+    name: "主页",
+    component: QuestionsView,
   },
   {
     path: "/questions",
@@ -79,25 +85,17 @@ export const routes: Array<RouteRecordRaw> = [
     },
   },
   {
-    path: "/",
-    name: "主页",
-    component: QuestionsView,
-  },
-  // {
-  //   path: "/hide",
-  //   name: "隐藏页面",
-  //   component: HomeView,
-  //   meta: {
-  //     hideInMenu: true,
-  //   },
-  // },
-  {
     path: "/noAuth",
     name: "无权限",
     component: NoAuthView,
     meta: {
       hideInMenu: true,
     },
+  },
+  {
+    path: "/example",
+    name: "示例代码",
+    component: ExampleCodeView,
   },
   // {
   //   path: "/admin",

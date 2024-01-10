@@ -1,9 +1,9 @@
 <template>
-  <a-row id="globalHeader" align="center" :wrap="false">
+  <a-row id="globalHeader" :wrap="false" align="center">
     <a-col flex="auto">
       <a-menu
-        mode="horizontal"
         :selected-keys="selectedKeys"
+        mode="horizontal"
         @menu-item-click="doMenuClick"
       >
         <a-menu-item
@@ -12,8 +12,8 @@
           disabled
         >
           <div class="title-bar">
-            <img class="logo" src="../assets/oj-logo.svg" />
-            <div class="title">鱼 OJ</div>
+            <img class="logo" src="../assets/oj.png" />
+            <div class="title">星辰 OJ</div>
           </div>
         </a-menu-item>
         <a-menu-item v-for="item in visibleRoutes" :key="item.path">
@@ -21,17 +21,22 @@
         </a-menu-item>
       </a-menu>
     </a-col>
-    <a-col flex="100px">
-      <div>
+    <a-col class="title-bar" flex="140px">
+      <div class="title" style="padding-right: 16px">
         {{ store.state.user?.loginUser?.userName ?? "未登录" }}
       </div>
+      <img
+        :src="store.state.user?.loginUser?.userAvatar"
+        class="logo"
+        style="height: 50px; width: 50px; border-radius: 50%"
+      />
     </a-col>
   </a-row>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import { routes } from "../router/routes";
-import { useRoute, useRouter } from "vue-router";
+import { useRouter } from "vue-router";
 import { computed, ref } from "vue";
 import { useStore } from "vuex";
 import checkAccess from "@/access/checkAccess";

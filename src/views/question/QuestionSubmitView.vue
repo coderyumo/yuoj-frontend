@@ -33,8 +33,14 @@
       }"
       @page-change="onPageChange"
     >
-      <template #judgeInfo="{ record }">
-        {{ JSON.stringify(record.judgeInfo) }}
+      <template #message="{ record }">
+        {{ record.judgeInfo.message }}
+      </template>
+      <template #memory="{ record }">
+        {{ record.judgeInfo.memory }}
+      </template>
+      <template #time="{ record }">
+        {{ record.judgeInfo.time }}
       </template>
       <template #createTime="{ record }">
         {{ moment(record.createTime).format("YYYY-MM-DD") }}
@@ -43,7 +49,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import { onMounted, ref, watchEffect } from "vue";
 import {
   Question,
@@ -105,12 +111,20 @@ const columns = [
     dataIndex: "language",
   },
   {
-    title: "判题信息",
-    slotName: "judgeInfo",
+    title: "结果",
+    slotName: "message",
+  },
+  {
+    title: "内存",
+    slotName: "memory",
+  },
+  {
+    title: "时间（ms）",
+    slotName: "time",
   },
   {
     title: "判题状态",
-    dataIndex: "status",
+    dataIndex: "statusValue",
   },
   {
     title: "题目 id",
