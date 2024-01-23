@@ -3,8 +3,8 @@
     <a-layout style="min-height: 100vh">
       <a-layout-header class="header">
         <a-space>
-          <img src="../assets/oj-logo.svg" class="logo" />
-          <div>鱼 OJ</div>
+          <img src="../assets/oj.png" class="logo" />
+          <div>星辰 OJ</div>
         </a-space>
       </a-layout-header>
       <a-layout-content class="content">
@@ -23,7 +23,7 @@
 #userLayout {
   text-align: center;
   background: url("https://gw.alipayobjects.com/zos/rmsportal/FfdJeJRQWjEeGTpqgBKj.png")
-    0% 0% / 100% 100%;
+  0% 0% / 100% 100%;
 }
 
 #userLayout .logo {
